@@ -70,6 +70,7 @@ export default {
     },
     rinkeby: {
       ...sharedNetworkConfig,
+      //accounts: [`0x${PK}`],
       url: `https://rinkeby.infura.io/v3/${INFURA_KEY}`,
     },
     xdai: {
