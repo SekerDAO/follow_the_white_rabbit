@@ -59,6 +59,9 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKOkxdol:;,'.........':o0MMWMMMMMMMM
 */
 
 contract TheWhiteRabbit is ERC721URIStorage, Ownable {
+    
+    string public followTheWhiteRabbit = "secp256k1 {iv: \'6facd38562f4e6f099b5a7b580b2c5b5\', ephemPublicKey: \'04a0ac5d87f521962b7c5af4a676dcf71e187744dfe1a34720868f780b54b4e015daa98e9d1590f48e9675d59133c14c4c28a501dc89f0a1b97d654877b148dc2c\', ciphertext: \'aabcc79b9263a422222306713e41bb6155835db58b79de0564e212feb9ba59220e5cbaa5f59a980a710c0141a146bc52\', mac: \'89fdc2647a4cbd4ee4cc31179f907db62c67e6d306bb2f746199b0b5ac914602\'}";
+
     constructor(
         string memory _name, 
         string memory _symbol,
@@ -68,14 +71,8 @@ contract TheWhiteRabbit is ERC721URIStorage, Ownable {
         _setTokenURI(1, _tokenURI);
     }
 
-    function followTheWhiteRabbit() public pure returns (string memory) {
-        return "secp256k1 {iv: \'6facd38562f4e6f099b5a7b580b2c5b5\', ephemPublicKey: \'04a0ac5d87f521962b7c5af4a676dcf71e187744dfe1a34720868f780b54b4e015daa98e9d1590f48e9675d59133c14c4c28a501dc89f0a1b97d654877b148dc2c\', ciphertext: \'aabcc79b9263a422222306713e41bb6155835db58b79de0564e212feb9ba59220e5cbaa5f59a980a710c0141a146bc52\', mac: \'89fdc2647a4cbd4ee4cc31179f907db62c67e6d306bb2f746199b0b5ac914602\'}";
-    }
-
     function mint(uint256 id, string memory _tokenURI) external onlyOwner {
         _mint(msg.sender, id);
         _setTokenURI(id, _tokenURI);
     }
-
-    function theDataWeCall(bytes calldata data) external onlyOwner {}
 }
