@@ -10,7 +10,7 @@ const encrypt = async function () {
 
 	const encrypted = await EthCrypto.encryptWithPublicKey(
 	    publicKey, // publicKey
-	    'what you seek is in the data that we call - 0x' // message
+	    'what you seek is in the data that we call - 0x43C6529292C68Af8330776b260d852F007876cF9' // message
 	);
 	console.log(encrypted)
 	const decrypted = await EthCrypto.decryptWithPrivateKey(
@@ -21,5 +21,3 @@ const encrypt = async function () {
 }
 
 encrypt()
-
-// if(decrypted === secretMessage) console.log('success');
