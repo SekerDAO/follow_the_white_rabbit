@@ -23,36 +23,35 @@ contract SeekersCompetition is Ownable {
 
     uint256 public totalWinners;
 
-    function submitKnowledgeChallenge(string memory answer) external {
-        if (isCorrectAnswer[keccak256(abi.encodePacked(answer))] == true) {
-            require(totalWinners <= 50, "knowledge submissions are maxed out");
-            isWinner[msg.sender] = true;
-            totalWinners++;
-        }
+    modifier onlyEligible(string memory answer) {
+        require(isCorrectAnswer[keccak256(abi.encodePacked(answer))] == true, "incorrect answer");
+        require(isWinner[msg.sender] == false, "account already registered a winner");
+        _;
     }
 
-    function submitManifestorChallenge(string memory answer) external {
-        if (isCorrectAnswer[keccak256(abi.encodePacked(answer))] == true) {
-            require(totalWinners <= 100, "manifestor submissions are maxed out");
-            isWinner[msg.sender] = true;
-            totalWinners++;
-        }
+
+    function submitKnowledgeChallenge(string memory answer) external onlyEligible(answer) {
+        require(totalWinners <= 50, "knowledge submissions are maxed out");
+        isWinner[msg.sender] = true;
+        totalWinners++;
     }
 
-    function submitAdventurerChallenge(string memory answer) external {
-        if (isCorrectAnswer[keccak256(abi.encodePacked(answer))] == true) {
-            require(totalWinners <= 150, "adventurer submissions are maxed out");
-            isWinner[msg.sender] = true;
-            totalWinners++;
-        }
+    function submitManifestorChallenge(string memory answer) external onlyEligible(answer) {
+        require(totalWinners <= 100, "manifestor submissions are maxed out");
+        isWinner[msg.sender] = true;
+        totalWinners++;
     }
 
-    function submitMysticChallenge(string memory answer) external {
-        if (isCorrectAnswer[keccak256(abi.encodePacked(answer))] == true) {
-            require(totalWinners <= 200, "mystic submissions are maxed out");
-            isWinner[msg.sender] = true;
-            totalWinners++;
-        }
+    function submitAdventurerChallenge(string memory answer) external onlyEligible(answer) {
+        require(totalWinners <= 150, "adventurer submissions are maxed out");
+        isWinner[msg.sender] = true;
+        totalWinners++;
+    }
+
+    function submitMysticChallenge(string memory answer) external onlyEligible(answer) {
+        require(totalWinners <= 200, "mystic submissions are maxed out");
+        isWinner[msg.sender] = true;
+        totalWinners++;
     }
 
     function uploadAnswers(string[] memory answers) external onlyOwner {
