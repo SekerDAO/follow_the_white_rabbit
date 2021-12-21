@@ -10,7 +10,7 @@ const deploy: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   console.log("Deploying contracts with the account:", deployer);
 
-  const args = ["The White Rabbit", "TWR", "https://gateway.ipfs.io/ipfs/QmSvNMsrakR8AjHb6dzn8cBuPq2EzYT1aSbZaMjydtGmkG"];
+  const args = ["The White Rabbit", "TWR", "ipfs://Qmck2FRLCvP55kCi9fQya1QzgSmzWzGAzi34nJKCmMXbg1/1"];
 
   const nft = await deploy("TheWhiteRabbit", {
     from: deployer,

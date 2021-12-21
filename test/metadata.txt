@@ -1,0 +1,6 @@
+{
+  "name": "The Seekers",
+  "description": "The Seekers Challenge",
+  "image": "https://gateway.ipfs.io/ipfs/QmSvNMsrakR8AjHb6dzn8cBuPq2EzYT1aSbZaMjydtGmkG",
+  "attributes": [...]
+}
